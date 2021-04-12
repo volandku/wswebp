@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.1" type="plugin" group="content" method="upgrade">
+	<name>PLG_WSWEBP_PLG_NAME</name>
+	<author>@volandku</author>
+	<creationDate>April 2021</creationDate>
+	<copyright>Copyright (C) webstudio.pro</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>sales@webstudio.pro</authorEmail>
+	<authorUrl>https://webstudio.pro</authorUrl>
+	<version>1.0.0</version>
+	<description>PLG_WSWEBP_PLG_DESCRIPTION</description>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_content_wswebp.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_content_wswebp.sys.ini</language>
+		<language tag="ru-RU">ru-RU/ru-RU.plg_content_wswebp.ini</language>
+		<language tag="ru-RU">ru-RU/ru-RU.plg_content_wswebp.sys.ini</language>
+	</languages>
+	<files>
+		<filename plugin="wswebp">wswebp.php</filename>
+		<folder>vendor</folder>
+
+	</files>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+						type="radio"
+						name="allow_modules"
+						label="PLG_WSWEBP_ALLOW_MODULES_LABEL"
+						description="PLG_WSWEBP_ALLOW_MODULES_DESC"
+						class="btn-group btn-group-yesno"
+						default="1">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field
+						type="radio"
+						showon="allow_modules:1"
+						name="modules_except"
+						label="PLG_WSWEBP_MODULES_EXCEPT_NAME"
+						description="PLG_WSWEBP_MODULES_EXCEPT_DESC"
+						class="btn-group btn-group-yesno"
+						default="1">
+					<option value="1">PLG_WSWEBP_MODULES_EXCEPT_YES</option>
+					<option value="0">PLG_WSWEBP_MODULES_EXCEPT_NO</option>
+				</field>
+				<field
+						name="e_modules"
+						showon="allow_modules:1"
+						type="sql"
+						default="10"
+						label="PLG_WSWEBP_EMODULES_LABEL"
+						query="SELECT  name FROM #__extensions WHERE type='module' AND client_id='0' AND enabled='1' AND access='1' "
+						key_field="name"
+						value_field="name"
+						multiple="true"
+				/>
+				<field
+						type="radio"
+						name="create_webp"
+						label="PLG_WSWEBP_CREATE_WEBP_LABEL"
+						description="PLG_WSWEBP_CREATE_WEBP_DESC"
+						class="btn-group btn-group-yesno"
+						default="0">
+					<option value="1">PLG_WSWEBP_CREATE_WEBP_YES</option>
+					<option value="0">PLG_WSWEBP_CREATE_WEBP_NO</option>
+				</field>
+				<field
+						type="integer"
+						showon="create_webp:1"
+						name="webp_quality"
+						label="PLG_WSWEBP_WEBP_QUALITY_LABEL"
+						description="PLG_WSWEBP_WEBP_QUALITY_DESC"
+						first="0"
+						last="100"
+						step="10"
+						default="80"
+
+				/>
+				<field
+						type="radio"
+						name="debug"
+						label="PLG_WSWEBP_DEBUG_LABEL"
+						description="PLG_WSWEBP_DEBUG_DESC"
+						class="btn-group btn-group-yesno"
+						default="0">
+					<option value="1">PLG_WSWEBP_DEBUG_YES</option>
+					<option value="0">PLG_WSWEBP_DEBUG_NO</option>
+				</field>
+
+				<field
+						name="note"
+						type="note"
+						label="PLG_WSWEBP_NOTE_LABEL"
+						description="PLG_WSWEBP_NOTE_DESC"
+						class="class"
+						close="true"
+				/>
+
+			</fieldset>
+			<fieldset name="advanced">
+
+			</fieldset>
+		</fields>
+	</config>
+</extension>
