@@ -103,7 +103,12 @@ class PlgContentWswebp extends JPlugin
         if ($extension=='gif') $image=imagecreatefromgif($file1);
         ob_start();
         if (in_array($extension,['jpeg','jpg'])) imagejpeg($image,NULL,100);
-        if ($extension=='png') imagepng($image,NULL,9);
+	if ($extension=='png')
+        {
+            imagealphablending($image, false);
+            imagesavealpha($image, true);
+            imagepng($image,NULL,9);
+        }
         if ($extension=='bmp') imagebmp($image,NULL,100);
         if ($extension=='gif') imagegif($image,NULL,100);
         $cont= ob_get_contents();
